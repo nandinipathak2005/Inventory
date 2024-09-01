@@ -1,17 +1,22 @@
+
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+
+import {getFirestore}   from "firebase/firestore";
+
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: "inventory-management-48cfc.firebaseapp.com",
+  projectId: "inventory-management-48cfc",
+  storageBucket: "inventory-management-48cfc.appspot.com",
+  messagingSenderId: "214131096979",
+  appId: "1:214131096979:web:2e905b9a1ad279803fbc66",
+  measurementId: "G-7E4PW0S4WK"
 };
 
+
 const app = initializeApp(firebaseConfig);
+
 const firestore = getFirestore(app);
 
-export { firestore };
+export {firestore}
