@@ -1,29 +1,25 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey = process.env.GEMINI_API_KEY;
-console.log('API Key:', apiKey);  // Check if API key is loaded
+// Initialize the generative AI instance with the API key
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const genAI = new GoogleGenerativeAI(apiKey);
+// Get the generative model
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-export const fetchRecipeSuggestions = async (prompt) => {
+const fetchRecipeSuggestions = async (prompt) => {
   try {
-    console.log('Prompt:', prompt);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    console.log('Model:', model);
-    
+    // Generate content based on the prompt
     const result = await model.generateContent(prompt);
-    console.log('Result:', result);
-
-    if (result && result.response) {
-      const response = await result.response;
-      const text = await response.text();
-      console.log('Generated Text:', text);
-      return text;
-    } else {
-      throw new Error('No response from API');
-    }
+    
+    // Extract and return the response text
+    const response = await result.response;
+    const text = await response.text();
+    
+    return text;
   } catch (error) {
     console.error('Error generating content:', error);
     return '';
   }
 };
+
+export { fetchRecipeSuggestions };
