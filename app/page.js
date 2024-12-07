@@ -106,7 +106,7 @@ export default function Home() {
     const getRecipes = async () => {
       try {
         const recipePromises = inventory.map(async (item) => {
-          const prompt = `Generate a detailed recipe using the following ingredient: ${item.name}. Format the recipe with proper headings and spacing as follows:
+          const prompt = `Generate a detailed recipe using the following ingredient: ${itemme}. Format the recipe with proper headings and spacing as follows:
   
   **Title:** The recipe name.
   
